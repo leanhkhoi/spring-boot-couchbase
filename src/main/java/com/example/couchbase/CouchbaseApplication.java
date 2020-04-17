@@ -33,8 +33,8 @@ public class CouchbaseApplication implements CommandLineRunner{
 	}
 	
 	private void init() {
-		//userService.delete(userService.findAll());
-		//productService.delete(productService.findAll());
+		/*userService.delete(userService.findAll());
+		productService.delete(productService.findAll());
 		
 		//userService.delete(userService.findByName("Kaitlyn Mitchell III"));
 		//productService.delete(productService.findByName("Kaitlyn Mitchell"));
@@ -51,7 +51,7 @@ public class CouchbaseApplication implements CommandLineRunner{
 			productService.save(product);
 			products.add(product.getId());
 		}
-
+		
 		for (int i = 0; i < 5; i++) {
 			User user = new User();
 			user.setName(RandomUtils.randomUserName());
@@ -60,7 +60,7 @@ public class CouchbaseApplication implements CommandLineRunner{
 			user.setCreated(new DateTime());
 			user.setUpdated(new DateTime());
 			userService.save(user);
-		}
+		}*/
 		 
 	}
 	

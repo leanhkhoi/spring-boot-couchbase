@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.example.couchbase.CouchbaseUtils;
@@ -18,6 +19,11 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private CouchbaseUtils couchbaseUtils;
 	
+	
+	@Override
+	public Product findById(String id) {
+		return null;
+	}
 	
 	@Override
 	public List<Product> findByName(String name) {
@@ -44,6 +50,13 @@ public class ProductServiceImpl implements ProductService {
 	public void delete(Iterable<Product> products) {
 		productRepository.deleteAll(products);
 	}
+
+	@Override
+	public Page<Product> findByCriteria(ProductCriteria criteria) {
+		return productRepository.findByCriteria(criteria);
+	}
+
+	
 
 //    @Autowired
 //    private BuildingRepository buildingRepository;

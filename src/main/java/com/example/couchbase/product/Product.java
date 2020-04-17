@@ -4,8 +4,6 @@ import javax.validation.constraints.NotNull;
 
 import org.joda.time.DateTime;
 import org.springframework.data.couchbase.core.mapping.Document;
-import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
-import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
 import com.couchbase.client.java.repository.annotation.Field;
 import com.couchbase.client.java.repository.annotation.Id;

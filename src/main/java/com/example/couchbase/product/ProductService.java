@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+
 public interface ProductService {
 
+	Product findById(String id);
+	
     Product save(@Valid Product product);
 
     List<Product> findByName(String name);
@@ -29,4 +33,6 @@ public interface ProductService {
 	 * 
 	 * Long countBuildings(String companyId);
 	 */
+
+	Page<Product> findByCriteria(ProductCriteria criteria);
 }

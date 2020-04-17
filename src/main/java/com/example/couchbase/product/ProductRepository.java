@@ -8,7 +8,7 @@ import org.springframework.data.couchbase.repository.CouchbasePagingAndSortingRe
 
 @N1qlPrimaryIndexed
 @ViewIndexed(designDoc = "product")
-public interface ProductRepository extends CouchbasePagingAndSortingRepository<Product, String> {
+public interface ProductRepository extends CouchbasePagingAndSortingRepository<Product, String>, ProductRepositoryCustom {
 	
     List<Product> findByName(String name);
     
