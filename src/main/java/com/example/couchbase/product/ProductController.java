@@ -31,6 +31,11 @@ public class ProductController {
 	public @ResponseBody Product save(@RequestBody Product model) {
 		return productService.save(model);
 	}
+	
+	@GetMapping("/full-text")
+	public Page<ProductFullTextSearchDto> fullTextSearch(ProductFullTextSearch criteria) {
+		return productService.fullTextSearch(criteria);
+	}
 
 	/*@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable(value = "id") String id) {

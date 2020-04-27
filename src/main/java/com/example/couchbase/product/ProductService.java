@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.data.domain.Page;
 
+import com.couchbase.client.java.document.json.JsonObject;
+
 public interface ProductService {
 
 	Product findById(String id);
@@ -35,4 +37,6 @@ public interface ProductService {
 	 */
 
 	Page<Product> findByCriteria(ProductCriteria criteria);
+	
+	Page<ProductFullTextSearchDto> fullTextSearch(ProductFullTextSearch criteria);
 }
