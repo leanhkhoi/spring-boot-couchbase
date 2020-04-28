@@ -18,34 +18,33 @@ import com.couchbase.client.java.query.Statement;
 @SuppressWarnings("unchecked")
 public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
-	@Autowired
-	private CouchbaseOperations operations;
-	
-	@Override
-	public Page<Product> findByCriteria(ProductCriteria criteria) {
-		
-		CouchbasePersistentEntity<Object> itemPersistenceEntity = (CouchbasePersistentEntity<Object>)
-				operations.getConverter()
-		            .getMappingContext()
-		            .getPersistentEntity(Product.class);
+    @Autowired
+    private CouchbaseOperations operations;
 
-		    CouchbaseEntityInformation<? extends Object, String> itemEntityInformation =
-		        new MappingCouchbaseEntityInformation<Object, String>(itemPersistenceEntity);
-		    
-		Statement countStatement = N1qlUtils.createCountQueryForEntity(operations.getCouchbaseBucket().name(),
-				operations.getConverter(), itemEntityInformation);
-		//N1qlUtils.buildQuery(statement, queryPlaceholderValues, scanConsistency)
+    @Override
+    public Page<Product> findByCriteria(ProductCriteria criteria) {
 
-		//ScanConsistency consistency = operations.getDefaultConsistency().n1qlConsistency();
-		N1qlParams queryParams = N1qlParams.build();
-		N1qlQuery query = N1qlQuery.simple(countStatement, queryParams);
+        CouchbasePersistentEntity<Object> itemPersistenceEntity = (CouchbasePersistentEntity<Object>) operations.getConverter().getMappingContext()
+                .getPersistentEntity(Product.class);
 
-		List<CountFragment> countFragments = operations.findByN1QL(query, CountFragment.class);
+        CouchbaseEntityInformation<? extends Object, String> itemEntityInformation = new MappingCouchbaseEntityInformation<Object, String>(
+                itemPersistenceEntity);
 
-		/*N1qlQuery query = 
-		List<Product> objects = operation.findByN1QL(n1ql, Product.class);*/
-		
-		return null;
-	}
+        Statement countStatement = N1qlUtils.createCountQueryForEntity(operations.getCouchbaseBucket().name(), operations.getConverter(),
+                itemEntityInformation);
+        // N1qlUtils.buildQuery(statement, queryPlaceholderValues, scanConsistency)
+
+        // ScanConsistency consistency = operations.getDefaultConsistency().n1qlConsistency();
+        N1qlParams queryParams = N1qlParams.build();
+        N1qlQuery query = N1qlQuery.simple(countStatement, queryParams);
+
+        List<CountFragment> countFragments = operations.findByN1QL(query, CountFragment.class);
+
+        /*
+         * N1qlQuery query = List<Product> objects = operation.findByN1QL(n1ql, Product.class);
+         */
+
+        return null;
+    }
 
 }

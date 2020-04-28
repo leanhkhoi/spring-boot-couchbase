@@ -19,4 +19,8 @@ public class RandomUtils {
 	public static String randomProductDescription() {
 		return new Faker().book().title();
 	}
+	
+	public static Double randomDouble() {
+        return new Faker().number().randomDouble(1, 1, 5);
+    }
 }
