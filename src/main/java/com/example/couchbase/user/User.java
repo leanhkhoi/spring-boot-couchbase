@@ -1,18 +1,13 @@
 package com.example.couchbase.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 import org.joda.time.DateTime;
 import org.springframework.data.couchbase.core.mapping.Document;
-import org.springframework.data.couchbase.core.query.N1qlJoin;
 
 import com.couchbase.client.java.repository.annotation.Field;
 import com.couchbase.client.java.repository.annotation.Id;
 import com.example.couchbase.DocumentType;
-import com.example.couchbase.rating.Rating;
 
 @Document
 public class User {
@@ -31,13 +26,6 @@ public class User {
     @Field
     @NotNull
     private Gender sex = Gender.MALE;
-
-    @Field
-    @NotNull
-    private List<String> interestingProducts = new ArrayList<String>();
-
-    @N1qlJoin(on = "lks.name=rks.user")
-    private List<Rating> ratings = new ArrayList<Rating>();
 
     @Field
     @NotNull
@@ -82,14 +70,6 @@ public class User {
         this.sex = sex;
     }
 
-    public List<String> getInterestingProducts() {
-        return interestingProducts;
-    }
-
-    public void setInterestingProducts(List<String> interestingProducts) {
-        this.interestingProducts = interestingProducts;
-    }
-
     public DocumentType getType() {
         return type;
     }
@@ -113,14 +93,5 @@ public class User {
     public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
-
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
-    }
-
     // standard getters and setters
 }

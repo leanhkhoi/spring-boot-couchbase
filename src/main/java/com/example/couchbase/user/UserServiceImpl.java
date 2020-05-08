@@ -12,40 +12,47 @@ import com.example.couchbase.CouchbaseUtils;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Autowired
-	private CouchbaseUtils couchbaseUtils;
-	
-	
-	@Override
-	public List<User> findByName(String name) {
-		return userRepository.findByName(name);
+    @Autowired
+    private CouchbaseUtils couchbaseUtils;
+
+    @Override
+    public List<User> findByName(String name) {
+	return userRepository.findByName(name);
+    }
+
+    @Override
+    public User save(@Valid User user) {
+
+	if (user.getId() == null) {
+	    user.setId(String.valueOf(couchbaseUtils.getNextId()));
 	}
 
-	@Override
-	public User save(@Valid User user) {
-		
-		if (user.getId() == null) {
-			user.setId(String.valueOf(couchbaseUtils.getNextId()));
-		}
-		
-		return userRepository.save(user);
-	}
-	
-	
-	@Override
-	public Iterable<User> findAll() {
-		return userRepository.findAll();
-	}
+	return userRepository.save(user);
+    }
 
+    @Override
+    public Iterable<User> findAll() {
+	return userRepository.findAll();
+    }
 
-	@Override
-	public void delete(Iterable<User> users) {
-		userRepository.deleteAll(users);
+    @Override
+    public void delete(Iterable<User> users) {
+	userRepository.deleteAll(users);
+    }
+
+    @Override
+    public Iterable<User> saveAll(@Valid Iterable<User> users) {
+	for (User r : users) {
+	    if (r.getId() == null) {
+		r.setId(String.valueOf(couchbaseUtils.getNextId()));
+	    }
 	}
-	
+	return userRepository.saveAll(users);
+    }
+
 //    @Autowired
 //    private BuildingRepository buildingRepository;
 //

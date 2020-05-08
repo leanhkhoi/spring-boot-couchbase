@@ -9,6 +9,8 @@ public interface RatingService {
     Rating findById(String id);
 
     Rating save(@Valid Rating rating);
+    
+    Iterable<Rating> saveAll(@Valid Iterable<Rating> ratings);
 
     Iterable<Rating> findAll();
 

@@ -15,11 +15,17 @@ public interface ProductRepository extends CouchbasePagingAndSortingRepository<P
 	
     List<Product> findByName(String name);
     
+    @Query("#{#n1ql.selectEntity} where #{#n1ql.filter}")
+    List<Product> findAll();
+    
     @Query("#{#n1ql.selectEntity} where #{#n1ql.filter} and META().id in $1")
     Page<Product> findAllById(Iterable<String> ids, Pageable pageable);
     
-    @Query("#{#n1ql.selectEntity} where #{#n1ql.filter} and (name = $1 or description like $2)")
-    Page<Product> search(String name, String description, Pageable pageable);
+    @Query("#{#n1ql.selectEntity} where #{#n1ql.filter} and (name like $1)")
+    Page<Product> searchByName(String name, Pageable pageable);
+    
+    @Query("#{#n1ql.selectEntity} where #{#n1ql.filter} and (category = $1)")
+    Page<Product> searchByCategory(String category, Pageable pageable);
     
 //    List<Building> findByCompanyId(String companyId);
 //

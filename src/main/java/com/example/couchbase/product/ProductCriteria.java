@@ -1,28 +1,27 @@
 package com.example.couchbase.product;
 
-
 import com.example.couchbase.AbstractCriteria;
 
 public class ProductCriteria extends AbstractCriteria {
 
-	private String name;
-	
-	private String description;
-	
+    private String name;
+
+    private ProductCateogry category;
+
     public String getName() {
-		return name;
-	}
+	return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public ProductCateogry getCategory() {
+        return category;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+    public void setCategory(ProductCateogry category) {
+        this.category = category;
+    }
+    
 }

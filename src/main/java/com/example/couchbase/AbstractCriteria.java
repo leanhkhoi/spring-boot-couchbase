@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort.Direction;
 public class AbstractCriteria {
 
     private String query;
-    private int pageSize = 5;
+    private int pageSize = 500;
     private int pageIndex = 0;
     private Direction sortDirection = Direction.ASC;
     private String sortField = "created_date";

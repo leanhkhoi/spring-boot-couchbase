@@ -1,8 +1,9 @@
 package com.example.couchbase.rating;
 
+import java.time.LocalDateTime;
+
 import javax.validation.constraints.NotNull;
 
-import org.joda.time.DateTime;
 import org.springframework.data.couchbase.core.mapping.Document;
 
 import com.couchbase.client.java.repository.annotation.Field;
@@ -22,7 +23,7 @@ public class Rating {
     @Field
     @NotNull
     private String product;
-
+    
     @Field
     @NotNull
     private DocumentType type = DocumentType.RATING;
@@ -33,10 +34,10 @@ public class Rating {
 
     @Field
     @NotNull
-    private DateTime created;
+    private LocalDateTime created;
 
     @Field
-    private DateTime updated;
+    private LocalDateTime updated;
 
     public String getId() {
         return id;
@@ -70,19 +71,19 @@ public class Rating {
         this.point = point;
     }
 
-    public DateTime getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(DateTime created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public DateTime getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 
-    public void setUpdated(DateTime updated) {
+    public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
 
@@ -93,5 +94,4 @@ public class Rating {
     public void setType(DocumentType type) {
         this.type = type;
     }
-
 }

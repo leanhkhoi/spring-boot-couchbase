@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.example.couchbase.product.Product;
-
 public interface UserService {
 
     User save(@Valid User product);
+    
+    Iterable<User> saveAll(@Valid Iterable<User> users);
 
     List<User> findByName(String name);
     
